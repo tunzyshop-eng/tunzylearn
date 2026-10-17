@@ -4,7 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tunzy Learn | Premium Digital Courses and Mentorship</title>
-<meta name="description" content="Premium digital courses in affiliate marketing, ghostwriting and cyber skills, with private WhatsApp mentorship on Tunzy Learn.">
+<meta name="description" content="Tunzy Learn offers premium digital courses in affiliate marketing, ghostwriting and cyber skills, with private WhatsApp mentorship.">
+<meta name="theme-color" content="#05070b">
+<link rel="canonical" href="https://tunzylearn.name.ng/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tunzy Learn">
+<meta property="og:title" content="Tunzy Learn | Premium Digital Courses and Mentorship">
+<meta property="og:description" content="Premium digital courses in affiliate marketing, ghostwriting and cyber skills, with private WhatsApp mentorship.">
+<meta property="og:url" content="https://tunzylearn.name.ng/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -45,6 +52,7 @@ h1,h2,h3{font-family:'Playfair Display',Georgia,serif;color:var(--silver-100);li
 .section-head{max-width:680px;margin-bottom:48px}
 .section-head h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:14px}
 .section-head p{color:var(--silver-500)}
+section[id]{scroll-margin-top:80px}
 
 /* Buttons */
 .btn{
@@ -68,15 +76,48 @@ header{
   background:rgba(5,7,11,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
-.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
+.nav{position:relative;display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
 .brand{
   font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;letter-spacing:.01em;
   background:var(--metal);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
 }
-.nav-links{display:flex;gap:30px;align-items:center}
-.nav-links a{font-size:.92rem;color:var(--silver-300);transition:color .2s}
-.nav-links a:hover{color:#fff}
 .nav-right{display:flex;align-items:center;gap:12px}
+
+/* Menu button (three lines) */
+.menu-toggle{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  background:var(--navy-800);border:1px solid var(--line);border-radius:10px;
+  width:44px;height:44px;cursor:pointer;transition:border-color .2s,background .2s;
+}
+.menu-toggle:hover{border-color:var(--silver-300)}
+.menu-toggle span{
+  display:block;width:20px;height:2px;background:var(--silver-100);border-radius:2px;
+  transition:transform .25s,opacity .2s;
+}
+.menu-toggle.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.menu-toggle.active span:nth-child(2){opacity:0}
+.menu-toggle.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Dropdown menu panel */
+.nav-links{
+  position:absolute;top:calc(100% + 10px);right:0;width:270px;
+  display:flex;flex-direction:column;
+  background:rgba(7,16,31,.98);border:1px solid rgba(201,209,220,.22);border-radius:14px;
+  padding:8px;box-shadow:0 24px 60px rgba(0,0,0,.65);
+  opacity:0;visibility:hidden;transform:translateY(-8px);
+  transition:opacity .2s,transform .2s,visibility .2s;
+}
+.nav-links.open{opacity:1;visibility:visible;transform:translateY(0)}
+.nav-links a{
+  padding:13px 16px;border-radius:9px;font-size:.95rem;font-weight:500;
+  color:var(--silver-300);transition:background .2s,color .2s;
+}
+.nav-links a:hover{background:rgba(255,255,255,.06);color:#fff}
+.nav-links .menu-sep{height:1px;background:var(--line);margin:6px 8px}
+.nav-links a.menu-cta{
+  background:var(--metal);color:#0a1020;font-weight:600;text-align:center;margin-top:4px;
+}
+.nav-links a.menu-cta:hover{background:var(--metal);color:#0a1020;opacity:.92}
 
 /* Currency */
 .currency{position:relative}
@@ -84,7 +125,7 @@ header{
   appearance:none;-webkit-appearance:none;
   background:var(--navy-800);color:var(--silver-100);
   border:1px solid var(--line);border-radius:10px;
-  padding:10px 34px 10px 14px;font-size:.85rem;font-weight:600;font-family:inherit;cursor:pointer;
+  padding:11px 34px 11px 14px;font-size:.85rem;font-weight:600;font-family:inherit;cursor:pointer;
 }
 .currency select:focus{outline:none;border-color:var(--silver-300)}
 .currency::after{
@@ -92,11 +133,6 @@ header{
   border-right:2px solid var(--silver-300);border-bottom:2px solid var(--silver-300);
   transform:translateY(-70%) rotate(45deg);pointer-events:none;
 }
-.menu-toggle{
-  display:none;background:none;border:1px solid var(--line);border-radius:10px;
-  width:42px;height:42px;cursor:pointer;color:var(--silver-100);
-}
-.menu-toggle span{display:block;width:18px;height:2px;background:var(--silver-100);margin:4px auto;border-radius:2px}
 
 /* Hero */
 .hero{
@@ -229,17 +265,12 @@ footer{background:#030509;border-top:1px solid var(--line);padding:44px 0 30px}
 }
 @media(max-width:760px){
   .section{padding:64px 0}
-  .menu-toggle{display:block}
-  .nav-links{
-    position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;
-    background:rgba(5,7,11,.98);border-bottom:1px solid var(--line);
-    max-height:0;overflow:hidden;transition:max-height .3s;
-  }
-  .nav-links.open{max-height:320px}
-  .nav-links a{padding:16px 22px;width:100%;border-top:1px solid var(--line)}
   .steps{grid-template-columns:1fr}
   .hero{padding:56px 0 64px}
   .hero-stats{gap:24px}
+  .brand{font-size:1.25rem}
+  .currency select{padding:11px 30px 11px 10px;font-size:.8rem}
+  .nav-links{position:fixed;top:78px;left:14px;right:14px;width:auto}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -249,12 +280,6 @@ footer{background:#030509;border-top:1px solid var(--line);padding:44px 0 30px}
 <header>
   <div class="container nav">
     <a href="#top" class="brand">Tunzy Learn</a>
-    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-      <a href="#courses">Courses</a>
-      <a href="#process">How It Works</a>
-      <a href="#mentorship">Mentorship</a>
-      <a href="#support">Support</a>
-    </nav>
     <div class="nav-right">
       <div class="currency">
         <select id="currencySelect" aria-label="Select currency">
@@ -268,10 +293,21 @@ footer{background:#030509;border-top:1px solid var(--line);padding:44px 0 30px}
           <option value="ZAR">ZAR - Rand</option>
         </select>
       </div>
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
     </div>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#top">Home</a>
+      <a href="#courses">Courses</a>
+      <a href="#process">How It Works</a>
+      <a href="#mentorship">Mentorship</a>
+      <a href="#support">Support</a>
+      <div class="menu-sep"></div>
+      <a href="mailto:tunzyshop@gmail.com">Email Support</a>
+      <a id="menuWa" href="#" target="_blank" rel="noopener">WhatsApp Support</a>
+      <a href="#courses" class="menu-cta">View Courses</a>
+    </nav>
   </div>
 </header>
 
@@ -545,19 +581,31 @@ footer{background:#030509;border-top:1px solid var(--line);padding:44px 0 30px}
   var waLink = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(VERIFY_MESSAGE);
   document.getElementById("verifyBtn").setAttribute("href", waLink);
   document.getElementById("footerWa").setAttribute("href", "https://wa.me/" + WHATSAPP_NUMBER);
+  document.getElementById("menuWa").setAttribute("href", "https://wa.me/" + WHATSAPP_NUMBER);
 
-  /* ---------- Mobile menu ---------- */
+  /* ---------- Three-line menu ---------- */
   var toggle = document.getElementById("menuToggle");
   var links  = document.getElementById("navLinks");
-  toggle.addEventListener("click", function(){
-    var open = links.classList.toggle("open");
+
+  function setMenu(open){
+    links.classList.toggle("open", open);
+    toggle.classList.toggle("active", open);
     toggle.setAttribute("aria-expanded", open ? "true" : "false");
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  toggle.addEventListener("click", function(e){
+    e.stopPropagation();
+    setMenu(!links.classList.contains("open"));
   });
   links.addEventListener("click", function(e){
-    if(e.target.tagName === "A"){
-      links.classList.remove("open");
-      toggle.setAttribute("aria-expanded","false");
-    }
+    if(e.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("click", function(e){
+    if(!links.contains(e.target) && !toggle.contains(e.target)) setMenu(false);
+  });
+  document.addEventListener("keydown", function(e){
+    if(e.key === "Escape") setMenu(false);
   });
 
   /* ---------- Footer year ---------- */
